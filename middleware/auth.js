@@ -6,25 +6,7 @@ var jwt = require("jsonwebtoken");
 var config = require("../config/secret");
 var ip = require("ip");
 
-//controller untuk register
-
-// exports.register = function (req, res) {
-//         var username = req.body.username;
-//         var email= req.body.email;
-//         var password= md5(req.body.password);
-//         var role= req.body.role;
-
-//     connection.query('INSERT INTO user (username,email,password,role) VALUES(?,?,?)',
-//         [username, email, password,role],
-//         function (error, rows, fields) {
-//             if (error) {
-//                 console.log(error);
-//             } else {
-//                 response.ok("Berhasil Menambahkan Data!", res)
-//             }
-//         });
-// };
-
+//REGISTER
 exports.registrasi = function (req, res) {
   var post = {
     nama_c: req.body.nama_c,
@@ -61,7 +43,7 @@ exports.registrasi = function (req, res) {
   });
 };
 
-// controller untuk login
+//LOGIN
 exports.login = function (req, res) {
   var post = {
     pw_c: req.body.pw_c,
@@ -123,12 +105,12 @@ exports.login = function (req, res) {
   });
 };
 
-// exports.halamanrahasia = function (req, res) {
-//   console.log(req.auth.role);
-//   const role = req.auth.role;
-//   if (role === 2) {
-//     response.ok("masukk", res);
-//   } else {
-//     res.json({ Error: true, Message: "Role salah!" });
-//   }
-// };
+exports.halamanrahasia = function (req, res) {
+  console.log("nah bisa kan");
+  const role = req.auth.role;
+  if (role === 2) {
+    response.ok("masukk", res);
+  } else {
+    res.json({ Error: true, Message: "Role salah!" });
+  }
+};
