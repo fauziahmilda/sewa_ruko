@@ -1,19 +1,11 @@
 const axios = require("axios");
 
+/**
+ * * AKSES DATA RUKO BY CUSTOMER
+ */
+
 exports.tampilkanUntukUser = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda tidak memiliki akses",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const data = await axios.get("http://localhost:3003/dataruko/tampil");
     console.log(data);
     if (!data) {
@@ -37,18 +29,6 @@ exports.tampilkanUntukUser = async (req, res) => {
 exports.cariBerdasarkanNamaHarga = async (req, res) => {
   //butuh keyword. keyword
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "token salah",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const search = req.query.keyword;
     const data = await axios.get(
       "http://localhost:3003/dataruko/cari?keyword=" + search
@@ -76,18 +56,6 @@ exports.cariBerdasarkanNamaHarga = async (req, res) => {
 exports.tampilkanDetail = async (req, res) => {
   //butuh keyword. keyword
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "token salah",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const data = await axios.get(
       "http://localhost:3003/dataruko/tampil/" + req.params.id_ruko
     );
@@ -114,18 +82,6 @@ exports.tampilkanDetail = async (req, res) => {
 exports.filterHarga = async (req, res) => {
   //butuh keyword. keyword
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "token salah",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const search = req.query.keyword;
     const data = await axios.get(
       "http://localhost:3003/dataruko/filterharga?keyword=" + search
@@ -150,24 +106,12 @@ exports.filterHarga = async (req, res) => {
   }
 };
 
-//----------------------------------------------------------------------------
-//data order
-//user 2
+/**
+ * * AKSES DATA ORDER BY CUSTOMER
+ */
 
 exports.tampilkanPelanggan = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda Tidak Memiliki Akses",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const data = await axios.get("http://localhost:3004/tampil");
     console.log(data);
     if (!data) {
@@ -190,18 +134,6 @@ exports.tampilkanPelanggan = async (req, res) => {
 
 exports.tampilkanRukoOrder = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda Tidak Memiliki Akses",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const data = await axios.get("http://localhost:3004/tampilruko");
     console.log(data);
     if (!data) {
@@ -224,13 +156,6 @@ exports.tampilkanRukoOrder = async (req, res) => {
 
 exports.tambahDataPelanggan = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda Tidak Memiliki Akses",
-      });
-    }
     const data = await axios.post("http://localhost:3004/tambahcst", req.body);
     console.log(data);
     if (!data) {
@@ -253,13 +178,6 @@ exports.tambahDataPelanggan = async (req, res) => {
 
 exports.mengorder = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda Tidak Memiliki Akses",
-      });
-    }
     const data = await axios.post("http://localhost:3004/transaksi", req.body);
     console.log(data);
     if (!data) {
@@ -282,18 +200,6 @@ exports.mengorder = async (req, res) => {
 
 exports.tampilkanDetailTransaksi = async (req, res) => {
   try {
-    console.log(req.auth.role);
-    if (req.auth.role !== 2) {
-      res.status(500).json({
-        error: true,
-        massage: "Anda Tidak Memiliki Akses",
-      });
-    }
-
-    // //const body = {
-    //     id : ,
-    //     lapak: .
-    // }
     const data = await axios.get(
       "http://localhost:3004/tampil/" + req.params.kodeorder
     );
