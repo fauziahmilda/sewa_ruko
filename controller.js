@@ -4,7 +4,7 @@ var response = require("./res");
 var connection = require("./koneksi");
 
 exports.index = function (req, res) {
-  response.ok("Aplikasi REST API ku berjalan!", res);
+  response.ok("REST API success", res);
 };
 
 //menampilkan semua data customer
